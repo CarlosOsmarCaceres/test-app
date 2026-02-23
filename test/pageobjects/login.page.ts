@@ -1,5 +1,5 @@
 import { $ } from '@wdio/globals'
-import Page from './page.js';
+import Page from './page';
 
 /**
  * sub page containing specific selectors and methods for a specific page
@@ -38,12 +38,6 @@ class LoginPage extends Page {
         await this.btnSubmit.click()
     }
 
-    /**
-     * overwrite specific options to adapt it to page object
-     */
-    public open () {
-        return super.open('login');
-    }
 }
 
 export default new LoginPage();

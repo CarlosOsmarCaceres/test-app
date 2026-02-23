@@ -1,6 +1,6 @@
 import { expect } from '@wdio/globals'
-import CatalogPage from '../pageobjects/catalog.page.ts'
-import ProductDetailPage from '../pageobjects/productDetail.page.ts'
+import CatalogPage from '../pageobjects/catalog.page'
+import ProductDetailPage from '../pageobjects/productDetail.page'
 
 describe('Portafolio: Flujo de Compra Sauce Labs', () => {
     const PRODUCTO_A_TESTEAR = 'Sauce Labs Backpack';
