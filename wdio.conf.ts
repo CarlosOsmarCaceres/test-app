@@ -58,9 +58,11 @@ export const config: WebdriverIO.Config = {
         'appium:automationName': 'UiAutomator2',
         'appium:deviceName': 'emulator-5554',
         'appium:platformVersion': '16', // Ajusta a la versión de tu emulador
-        'appium:appPackage': 'com.android.settings',
-        'appium:appActivity': '.Settings',
-        'appium:noReset': true
+        'appium:app': './app/demo-app.apk', // Ruta a la aplicación APK
+        'appium:autoGrantPermissions': true
+        //'appium:appPackage': 'com.android.settings',
+        //'appium:appActivity': '.Settings',
+        //'appium:noReset': true
     }],
 
     //
