@@ -9,15 +9,18 @@ class LoginPage extends Page {
      * define selectors using getter methods
      */
     public get inputUsername () {
-        return $('#username');
+        // Campo de usuario en la app nativa (Accessibility ID)
+        return $('~Username input field')
     }
 
     public get inputPassword () {
-        return $('#password');
+        // Campo de contraseña en la app nativa (Accessibility ID)
+        return $('~Password input field')
     }
 
     public get btnSubmit () {
-        return $('button[type="submit"]');
+        // Botón de login en la app nativa (Accessibility ID)
+        return $('~Login button')
     }
 
     /**
@@ -25,9 +28,14 @@ class LoginPage extends Page {
      * e.g. to login using username and password
      */
     public async login (username: string, password: string) {
-        await this.inputUsername.setValue(username);
-        await this.inputPassword.setValue(password);
-        await this.btnSubmit.click();
+        await this.inputUsername.waitForDisplayed({ timeout: 20000 })
+        await this.inputUsername.setValue(username)
+
+        await this.inputPassword.waitForDisplayed({ timeout: 20000 })
+        await this.inputPassword.setValue(password)
+
+        await this.btnSubmit.waitForDisplayed({ timeout: 20000 })
+        await this.btnSubmit.click()
     }
 
     /**
