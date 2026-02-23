@@ -9,6 +9,10 @@ class ProductDetailPage {
         return $('~Add To Cart button')
     }
 
+    public get cartBadge() {
+        return $('~cart badge')
+    }
+
     public async waitForLoaded(productName: string) {
         await this.productTitle(productName).waitForDisplayed({ timeout: 20000 })
     }
