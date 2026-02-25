@@ -2,10 +2,10 @@ import { expect } from '@wdio/globals'
 import CatalogPage from '../pageobjects/catalog.page'
 import ProductDetailPage from '../pageobjects/productDetail.page'
 
-describe('Portafolio: Flujo de Compra Sauce Labs', () => {
+describe('Portafolio: ****** Flujo seleccion de producto ******', () => {
     const PRODUCTO_A_TESTEAR = 'Sauce Labs Backpack';
 
-    it('Debería navegar, abrir el detalle y añadir al carrito', async () => {
+    it('test: 1. Debería navegar, abrir el detalle y añadir al carrito', async () => {
         // 1. Esperamos a que el catálogo cargue
         await CatalogPage.waitForLoaded();
 

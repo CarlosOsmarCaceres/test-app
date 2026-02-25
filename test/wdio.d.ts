@@ -15,6 +15,8 @@ declare namespace WebdriverIO {
             condition: () => boolean | Promise<boolean>,
             options?: WaitUntilOptions
         ): Promise<boolean>
+
+        /* takeScreenshot(): Promise<string> */
     }
 }
 

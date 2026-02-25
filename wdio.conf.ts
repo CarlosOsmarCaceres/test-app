@@ -1,3 +1,7 @@
+// eslint-disable-next-line @typescript-eslint/ban-ts-comment
+// @ts-ignore - runtime import only, types provided by package
+//import allure from '@wdio/allure-reporter'************
+
 export const config: WebdriverIO.Config = {
     //
     // ====================
@@ -29,10 +33,12 @@ export const config: WebdriverIO.Config = {
     suites: {
         login: ['./test/specs/login.e2e.ts'],
         compra: ['./test/specs/cart.e2e.ts'],
+        e2e: ['./test/specs/purchase.e2e.ts'],
         regresion: [
             './test/specs/login.e2e.ts',
-            './test/specs/cart.e2e.ts'
-        ]
+            './test/specs/cart.e2e.ts',
+            './test/specs/purchase.e2e.ts'
+        ],
     },
     // Patterns to exclude.
     exclude: [
@@ -141,10 +147,15 @@ export const config: WebdriverIO.Config = {
     // Whether or not retried spec files should be retried immediately or deferred to the end of the queue
     // specFileRetriesDeferred: false,
     //
-    // Test reporter for stdout.
-    // The only one supported by default is 'dot'
-    // see also: https://webdriver.io/docs/dot-reporter
-    reporters: ['spec'],
+    // Test reporters
+    reporters: [
+        'spec',
+        /* ['allure', {
+            outputDir: 'allure-results',
+            disableWebdriverStepsReporting: false,
+            disableWebdriverScreenshotsReporting: false
+        }] */
+    ],
 
     // Options to be passed to Mocha.
     // See the full list at http://mochajs.org/
@@ -246,9 +257,19 @@ export const config: WebdriverIO.Config = {
      * @param {number}  result.duration  duration of test
      * @param {boolean} result.passed    true if test has passed, otherwise false
      * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
-     */
-    // afterTest: function(test, context, { error, result, duration, passed, retries }) {
-    // },
+
+
+
+    /* afterTest: async function (_test: any, _context: any, { passed }: any) {
+        if (!passed) {
+            const screenshot = await browser.takeScreenshot()
+            allure.addAttachment(
+                'Failure Screenshot',
+                Buffer.from(screenshot, 'base64'),
+                'image/png'
+            )
+        }
+    }, */
 
 
     /**
