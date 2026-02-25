@@ -29,13 +29,21 @@ class LoginPage extends Page {
      */
     public async login (username: string, password: string) {
         await this.inputUsername.waitForDisplayed({ timeout: 20000 })
+        await this.inputUsername.clearValue()
         await this.inputUsername.setValue(username)
 
         await this.inputPassword.waitForDisplayed({ timeout: 20000 })
+        await this.inputPassword.clearValue()
         await this.inputPassword.setValue(password)
 
         await this.btnSubmit.waitForDisplayed({ timeout: 20000 })
         await this.btnSubmit.click()
+    }
+
+    public get errorMessage () {
+        return $(
+            '//android.widget.TextView[contains(@text, "Provided credentials do not match") or contains(@text, "Sorry")]'
+        )
     }
 
 }
