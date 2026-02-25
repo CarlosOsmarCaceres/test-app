@@ -32,7 +32,7 @@ export const config: WebdriverIO.Config = {
     ],
     suites: {
         login: ['./test/specs/login.e2e.ts'],
-        compra: ['./test/specs/cart.e2e.ts'],
+        slected: ['./test/specs/cart.e2e.ts'],
         e2e: ['./test/specs/purchase.e2e.ts'],
         regresion: [
             './test/specs/login.e2e.ts',
@@ -150,11 +150,11 @@ export const config: WebdriverIO.Config = {
     // Test reporters
     reporters: [
         'spec',
-        /* ['allure', {
+        ['allure', {
             outputDir: 'allure-results',
-            disableWebdriverStepsReporting: false,
+            disableWebdriverStepsReporting: true,
             disableWebdriverScreenshotsReporting: false
-        }] */
+        }]
     ],
 
     // Options to be passed to Mocha.
@@ -250,28 +250,12 @@ export const config: WebdriverIO.Config = {
     // },
     /**
      * Function to be executed after a test (in Mocha/Jasmine only)
-     * @param {object}  test             test object
-     * @param {object}  context          scope object the test was executed with
-     * @param {Error}   result.error     error object in case the test fails, otherwise `undefined`
-     * @param {*}       result.result    return object of test function
-     * @param {number}  result.duration  duration of test
-     * @param {boolean} result.passed    true if test has passed, otherwise false
-     * @param {object}  result.retries   information about spec related retries, e.g. `{ attempts: 0, limit: 0 }`
-
-
-
-    /* afterTest: async function (_test: any, _context: any, { passed }: any) {
+     */
+    afterTest: async function (_test: any, _context: any, { passed }: any) {
         if (!passed) {
-            const screenshot = await browser.takeScreenshot()
-            allure.addAttachment(
-                'Failure Screenshot',
-                Buffer.from(screenshot, 'base64'),
-                'image/png'
-            )
+            await browser.takeScreenshot()
         }
-    }, */
-
-
+    },
     /**
      * Hook that gets executed after the suite has ended
      * @param {object} suite suite details
