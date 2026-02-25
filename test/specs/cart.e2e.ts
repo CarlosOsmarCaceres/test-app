@@ -30,3 +30,4 @@ describe('Portafolio: Flujo de Compra Sauce Labs', () => {
         await ProductDetailPage.takeScreenshot('./evidencia_detalle.png');
     });
 });
+

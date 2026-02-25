@@ -26,6 +26,14 @@ export const config: WebdriverIO.Config = {
     specs: [
         './test/specs/**/*.ts'
     ],
+    suites: {
+        login: ['./test/specs/login.e2e.ts'],
+        compra: ['./test/specs/cart.e2e.ts'],
+        regresion: [
+            './test/specs/login.e2e.ts',
+            './test/specs/cart.e2e.ts'
+        ]
+    },
     // Patterns to exclude.
     exclude: [
         // 'path/to/excluded/files'
@@ -46,7 +54,7 @@ export const config: WebdriverIO.Config = {
     // and 30 processes will get spawned. The property handles how many capabilities
     // from the same test should run tests.
     //
-    maxInstances: 10,
+    maxInstances: 1,
     //
     // If you have trouble getting all important capabilities together, check out the
     // Sauce Labs platform configurator - a great tool to configure your capabilities:
@@ -54,6 +62,7 @@ export const config: WebdriverIO.Config = {
     //
     capabilities: [{
         // capabilities for local Appium web tests on an Android Emulator
+        maxInstances: 1,
         platformName: 'Android',
         'appium:automationName': 'UiAutomator2',
         'appium:deviceName': 'emulator-5554',
